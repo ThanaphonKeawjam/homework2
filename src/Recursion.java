@@ -42,21 +42,21 @@ public class Recursion {
 	 * @return values of fibonacci number.
 	 */
 	public static long fibonacci2(int n) {
-		return helper(n, 0, 1);
-	
+		return helper(n, 0, 0, 1);
 	}
 	
 	/**
 	 * This method uses for help find fibonacci number.
 	 * Start with f(0) = 1, f(1) = 1.
 	 * @param n is number to find fibonacci number.
-	 * @param previous is previous vale and start with 0.
-	 * @param current is current vale and start with 1.
+	 * @param start is value of start compute.
+	 * @param previous is previous vale and start with 0 ( f(0) = 0 ).
+	 * @param current is current vale and start with 1 ( f(1) = 1 ).
 	 * @return values of fibonacci number.
 	 */
-	public static long helper(int n, long previous, long current) {
-		if(n == 0) return previous;
-		else return helper(n - 1, current, previous + current);
+	public static long helper(int n, int start, long previous, long current) {
+		if(start == n) return previous;
+		else return helper(n, start + 1, current, previous + current);
 	} 
 	
 	public static void main(String[] args) {
@@ -87,8 +87,10 @@ public class Recursion {
 		
 		int n = 48;
 		for(int i = 0; i <= n; i++) {
-			System.out.println((i) + " = " + fibonacci2(i));
+			System.out.println("f(" + (i) + ") = " + fibonacci2(i));
 		} 
+		System.out.println();
+		System.out.println(fibonacci2(48));
 		
 	}
 
